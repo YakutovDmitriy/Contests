@@ -11,22 +11,6 @@ public class FastReader extends BufferedReader {
         super(new InputStreamReader(inputStream));
     }
 
-    public FastReader() {
-        this(System.in);
-    }
-
-    public FastReader(String fileName) throws FileNotFoundException {
-        this(new FileInputStream(fileName));
-    }
-
-    public FastReader(Reader in, int sz) {
-        super(in, sz);
-    }
-
-    public FastReader(Reader in) {
-        super(in);
-    }
-
     public String nextToken() {
         try {
             while (stringTokenizer == null || !stringTokenizer.hasMoreElements()) {
