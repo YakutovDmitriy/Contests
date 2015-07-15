@@ -1,0 +1,39 @@
+18 B - Cinema Cashier
+6 SINGLE
+8 STANDARD
+-1
+8 STANDARD
+-1
+2
+0
+8 2 1
+1 1
+
+9 1 1 1
+-1
+
+1
+1
+12 4 3
+1 2 3 1
+
+24 2 2 2
+1 1 2
+3 1 3
+2 1 1
+
+1
+8 src/code
+8 -Xmx256M
+4 Main
+10 code.TaskB
+39 net.egork.chelper.checkers.TokenChecker
+0 
+0
+10 2015.05.24
+25 Codeforces Beta Round #10
+1
+15 util.FastReader
+19 java.io.PrintWriter
+0
+0

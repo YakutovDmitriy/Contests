@@ -1,0 +1,34 @@
+21 H - Degenerate Matrix
+6 SINGLE
+8 STANDARD
+-1
+8 STANDARD
+-1
+2
+0
+8 1 2
+3 4
+
+-1
+1
+1
+8 1 0
+0 1
+
+13 0.5000000000
+
+1
+8 src/code
+8 -Xmx256M
+4 Main
+10 code.TaskH
+39 net.egork.chelper.checkers.TokenChecker
+0 
+0
+10 2015.06.06
+17 Looksery Cup 2015
+1
+15 util.FastReader
+19 java.io.PrintWriter
+0
+0

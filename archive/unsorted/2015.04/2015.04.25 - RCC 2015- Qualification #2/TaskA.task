@@ -1,0 +1,34 @@
+5 TaskA
+12 MULTI_NUMBER
+8 STANDARD
+9 input.txt
+8 STANDARD
+10 output.txt
+1
+0
+37 5
+2 1 2
+100 99 2
+17 13 10
+3 3 1
+1 1 2
+12 0
+98
+-1
+0
+-1
+1
+8 src/code
+16 -Xmx256m -Xss64m
+4 Main
+10 code.TaskA
+39 net.egork.chelper.checkers.TokenChecker
+0 
+0
+10 2015.04.25
+26 RCC 2015: Qualification #2
+1
+15 util.FastReader
+19 java.io.PrintWriter
+0
+0

@@ -1,0 +1,40 @@
+19 B - Ohana Cleans Up
+6 SINGLE
+8 STANDARD
+-1
+8 STANDARD
+-1
+2
+0
+22 4
+0101
+1000
+1111
+0101
+
+2 2
+
+1
+1
+14 3
+111
+111
+111
+
+2 3
+
+1
+8 src/code
+8 -Xmx256M
+4 Main
+10 code.TaskB
+39 net.egork.chelper.checkers.TokenChecker
+0 
+0
+10 2015.07.07
+30 Codeforces Round #309 (Div. 2)
+1
+15 util.FastReader
+15 util.FastWriter
+0
+0

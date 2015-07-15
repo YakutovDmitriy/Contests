@@ -1,0 +1,51 @@
+12 Nenokku_easy
+6 SINGLE
+7 TASK_ID
+9 input.txt
+7 TASK_ID
+10 output.txt
+2
+0
+51 ? love
+? is
+A Loveis
+? love
+? WHO
+A Whoarethey
+? is
+16 NO
+NO
+YES
+NO
+YES
+1
+1
+58 ? love
+? is
+A Loveis
+? love
+? WHO
+A Whoareyou
+? is
+? isWhO
+20 NO
+NO
+YES
+NO
+YES
+YES
+1
+8 src/code
+16 -Xmx256m -Xss64m
+4 Main
+17 code.Nenokku_easy
+39 net.egork.chelper.checkers.TokenChecker
+0 
+0
+10 2015.06.04
+37 2012-2013 SPbSU Train C #10. Strings.
+1
+15 util.FastReader
+19 java.io.PrintWriter
+0
+0
