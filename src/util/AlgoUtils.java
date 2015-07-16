@@ -268,7 +268,7 @@ public abstract class AlgoUtils {
         return r;
     }
 
-    public static int minimalExcludant(int[] a) {
+    public static int minimalExcluded(int[] a) {
         boolean[] has = new boolean[a.length];
         for (int x : a) {
             if (x < a.length) {
