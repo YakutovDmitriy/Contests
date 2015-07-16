@@ -2,6 +2,7 @@ package util;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
 
 public abstract class AlgoUtils {
 
@@ -141,6 +142,34 @@ public abstract class AlgoUtils {
         return r;
     }
 
+    public static <T extends Comparable<? super T>> int lowerBound(List<T> a, T value) {
+        int l = -1;
+        int r = a.size();
+        while (r - l > 1) {
+            int m = (l + r) / 2;
+            if (a.get(m).compareTo(value) >= 0) {
+                r = m;
+            } else {
+                l = m;
+            }
+        }
+        return r;
+    }
+
+    public static <T> int lowerBound(List<T> a, T value, Comparator<? super T> comp) {
+        int l = -1;
+        int r = a.size();
+        while (r - l > 1) {
+            int m = (l + r) / 2;
+            if (comp.compare(a.get(m), value) >= 0) {
+                r = m;
+            } else {
+                l = m;
+            }
+        }
+        return r;
+    }
+
     public static int upperBound(int[] a, int value) {
         int l = -1;
         int r = a.length;
@@ -203,6 +232,34 @@ public abstract class AlgoUtils {
         while (r - l > 1) {
             int m = (l + r) / 2;
             if (comp.compare(a[m], value) > 0) {
+                r = m;
+            } else {
+                l = m;
+            }
+        }
+        return r;
+    }
+
+    public static <T extends Comparable<? super T>> int upperBound(List<T> a, T value) {
+        int l = -1;
+        int r = a.size();
+        while (r - l > 1) {
+            int m = (l + r) / 2;
+            if (a.get(m).compareTo(value) > 0) {
+                r = m;
+            } else {
+                l = m;
+            }
+        }
+        return r;
+    }
+
+    public static <T> int upperBound(List<T> a, T value, Comparator<? super T> comp) {
+        int l = -1;
+        int r = a.size();
+        while (r - l > 1) {
+            int m = (l + r) / 2;
+            if (comp.compare(a.get(m), value) > 0) {
                 r = m;
             } else {
                 l = m;
