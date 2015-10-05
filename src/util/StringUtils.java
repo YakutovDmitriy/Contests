@@ -2,6 +2,36 @@ package util;
 
 public abstract class StringUtils {
 
+    public static int getPeriod(char[] s) {
+        int[] prefix = getPrefixFunction(s);
+        int length = s.length - prefix[s.length - 1];
+        if (s.length % length == 0) {
+            return length;
+        } else {
+            return s.length;
+        }
+    }
+
+    public static int getPeriod(int[] s) {
+        int[] prefix = getPrefixFunction(s);
+        int length = s.length - prefix[s.length - 1];
+        if (s.length % length == 0) {
+            return s.length / length;
+        } else {
+            return 1;
+        }
+    }
+
+    public static int getPeriod(String s) {
+        int[] prefix = getPrefixFunction(s);
+        int length = s.length() - prefix[s.length() - 1];
+        if (s.length() % length == 0) {
+            return s.length() / length;
+        } else {
+            return 1;
+        }
+    }
+
     public static int[] getZFunction(final char[] s) {
         int n = s.length;
         int[] z = new int[n];
@@ -119,7 +149,7 @@ public abstract class StringUtils {
                 s[j] = s[j - i];
                 pos = j + 1;
             }
-            if (s[z[i]] == s[i + z[i]]) {
+            if (i + z[i] < z.length && s[z[i]] == s[i + z[i]]) {
                 s[i + z[i]] = ++last;
             }
         }

@@ -1,6 +1,7 @@
 package util;
 
 import java.io.*;
+import java.math.BigInteger;
 import java.util.StringTokenizer;
 
 public class FastReader extends BufferedReader {
@@ -57,6 +58,10 @@ public class FastReader extends BufferedReader {
 
     public double nextDouble() {
         return Double.parseDouble(nextToken());
+    }
+
+    public BigInteger nextBigInteger() {
+        return new BigInteger(nextToken());
     }
 
     public char[] nextCharArray() {

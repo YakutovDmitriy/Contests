@@ -6,6 +6,100 @@ import java.util.List;
 
 public abstract class AlgoUtils {
 
+    public static void toGauss(double[][] a, final double EPS) {
+        if (a == null || a[0] == null) {
+            return;
+        }
+        int n = a.length;
+        int m = a[0].length;
+        for (int i = 0; i < n; i++) {
+            int str = i;
+            while (str < n && Math.abs(a[str][i]) < EPS) {
+                str++;
+            }
+            if (str == n) {
+                continue;
+            }
+            double div = a[str][i];
+            for (int j = i; j < m; j++) {
+                double temp = a[str][j];
+                a[str][j] = a[i][j];
+                a[i][j] = temp / div;
+            }
+            for (int ii = i + 1; ii < n; ii++) {
+                double mul = a[ii][i];
+                for (int j = i; j < m; j++) {
+                    a[ii][j] -= a[i][j] * mul;
+                }
+            }
+        }
+        for (int i = n - 1; i > 0; i--) {
+            if (Math.abs(a[i][i]) > EPS) {
+                double div = a[i][i];
+                for (int j = 0; j < m; j++) {
+                    a[i][j] /= div;
+                }
+                for (int ii = i - 1; ii >= 0; ii--) {
+                    double mul = a[ii][i];
+                    for (int j = 0; j < m; j++) {
+                        a[ii][j] -= mul * a[i][j];
+                    }
+                }
+            }
+        }
+    }
+
+    public static void toGauss(double[][] a, double[] values, final double EPS) {
+        if (a == null || a[0] == null) {
+            return;
+        }
+        int n = a.length;
+        int m = a[0].length;
+        for (int row = 0, col = 0; col < m && row < n; row++) {
+            int str = row;
+            for (int ii = row; ii < n; ii++) {
+                if (Math.abs(a[ii][col]) > Math.abs(a[str][col])) {
+                    str = ii;
+                }
+            }
+            if (Math.abs(a[str][col]) < EPS) {
+                continue;
+            }
+            double div = a[str][col];
+            double temp = values[str];
+            values[str] = values[row];
+            values[row] = temp / div;
+            for (int j = col; j < m; j++) {
+                temp = a[str][j];
+                a[str][j] = a[row][j];
+                a[row][j] = temp / div;
+            }
+            for (int ii = row + 1; ii < n; ii++) {
+                double mul = a[ii][col];
+                for (int j = col; j < m; j++) {
+                    a[ii][j] -= a[row][j] * mul;
+                }
+                values[ii] -= values[row] * mul;
+            }
+        }
+        for (int i = n - 1; i > 0; i--) {
+            if (Math.abs(a[i][i]) > EPS) {
+                double div = a[i][i];
+                values[i] /= div;
+                for (int j = 0; j < m; j++) {
+                    a[i][j] /= div;
+                }
+                for (int ii = i - 1; ii >= 0; ii--) {
+                    double mul = a[ii][i];
+                    for (int j = 0; j < m; j++) {
+                        a[ii][j] -= mul * a[i][j];
+                    }
+                    values[ii] -= values[i] * mul;
+                }
+            }
+        }
+    }
+
     public static int josephProblem(int n, int k) {
         int ret = 0;
         for (int i = 1; i <= n; ++i) {
