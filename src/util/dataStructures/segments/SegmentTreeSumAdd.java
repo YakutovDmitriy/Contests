@@ -1,4 +1,4 @@
-package util.dataStructures;
+package util.dataStructures.segments;
 
 public class SegmentTreeSumAdd {
 
@@ -35,10 +35,10 @@ public class SegmentTreeSumAdd {
     private void push(int v, int l, int r) {
         if (needAdd[v] != 0) {
             int m = (l + r) / 2;
-            tree[2 * m + 1] += (long) (m - l) * needAdd[v];
-            tree[2 * m + 2] += (long) (r - m) * needAdd[v];
-            needAdd[2 * m + 1] += needAdd[v];
-            needAdd[2 * m + 2] += needAdd[v];
+            tree[2 * v + 1] += (long) (m - l) * needAdd[v];
+            tree[2 * v + 2] += (long) (r - m) * needAdd[v];
+            needAdd[2 * v + 1] += needAdd[v];
+            needAdd[2 * v + 2] += needAdd[v];
             needAdd[v] = 0;
         }
     }

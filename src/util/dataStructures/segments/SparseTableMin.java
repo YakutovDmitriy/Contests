@@ -1,4 +1,4 @@
-package util.dataStructures;
+package util.dataStructures.segments;
 
 public class SparseTableMin {
 
@@ -16,7 +16,7 @@ public class SparseTableMin {
         for (int i = 1; i < log; i++) {
             int halfLen = 1 << (i - 1);
             a[i] = new int[n];
-            for (int j = 0; j < a[i].length; j++) {
+            for (int j = 0; j + halfLen < a[i].length; j++) {
                 a[i][j] = Math.min(a[i - 1][j], a[i - 1][j + halfLen]);
             }
         }
@@ -28,6 +28,11 @@ public class SparseTableMin {
 
     public int getMin(int left, int right) {
         int i = deg[right - left];
-        return Math.min(a[i][left], a[i][right - (1 << i)]);
+        try {
+            return Math.min(a[i][left], a[i][right - (1 << i)]);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.err.println(left + " " + right);
+            throw e;
+        }
     }
 }

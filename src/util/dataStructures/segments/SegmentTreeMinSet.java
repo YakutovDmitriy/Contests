@@ -1,4 +1,4 @@
-package util.dataStructures;
+package util.dataStructures.segments;
 
 import java.util.Arrays;
 

@@ -1,4 +1,4 @@
-package util.dataStructures;
+package util.dataStructures.segments;
 
 import java.util.Arrays;
 
@@ -40,10 +40,10 @@ public class SegmentTreeSumSet {
     private void push(int v, int l, int r) {
         if (needSet[v] != NONE) {
             int m = (l + r) / 2;
-            tree[2 * m + 1] = (long) (m - l) * needSet[v];
-            tree[2 * m + 2] = (long) (r - m) * needSet[v];
-            needSet[2 * m + 1] = needSet[v];
-            needSet[2 * m + 2] = needSet[v];
+            tree[2 * v + 1] = (long) (m - l) * needSet[v];
+            tree[2 * v + 2] = (long) (r - m) * needSet[v];
+            needSet[2 * v + 1] = needSet[v];
+            needSet[2 * v + 2] = needSet[v];
             needSet[v] = NONE;
         }
     }
