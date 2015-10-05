@@ -7,6 +7,14 @@ import java.util.Arrays;
 
 public abstract class MathUtils {
 
+    public static double sqrt(double x) {
+        double ret = x;
+        for (int i = 0; i < 15; i++) {
+            ret = (ret + x / ret) / 2;
+        }
+        return ret;
+    }
+
     public static int modPow(int base, long indicator, int module) {
         int ret = 1;
         for (; indicator > 0; indicator >>= 1) {
@@ -85,19 +93,23 @@ public abstract class MathUtils {
     }
 
     public static long gcd(long a, long b) {
+        a = Math.abs(a);
+        b = Math.abs(b);
         while (b > 0) {
             long t = a % b;
-            b = a;
-            a = t;
+            a = b;
+            b = t;
         }
         return a;
     }
 
     public static int gcd(int a, int b) {
+        a = Math.abs(a);
+        b = Math.abs(b);
         while (b > 0) {
             int t = a % b;
-            b = a;
-            a = t;
+            a = b;
+            b = t;
         }
         return a;
     }

@@ -1,5 +1,7 @@
 package util;
 
+import util.dataStructures.SuffixAutomaton;
+
 public abstract class StringUtils {
 
     public static int getPeriod(char[] s) {
@@ -204,58 +206,73 @@ public abstract class StringUtils {
         return ret;
     }
 
-    public static int[] getOddPalindromes(char[] s) {
-        int l = 0;
+    public static int[] getManacher(int[] a) {
+        int n = a.length;
+        int[] ret = new int[n];
+        int l = -1;
         int r = -1;
-        int[] ret = new int[s.length];
-        for (int i = 0; i < s.length; ++i) {
-            int j = 1;
-            if (i <= r) {
-                j = Math.min(ret[l + r - i] + 1, r - i + 1);
+        for (int i = 0; i < n; i++) {
+            if (i < r) {
+                ret[i] = Math.min(ret[l + r - i], r - i);
             }
-            while (i + j < s.length && i - j >= 0 && s[i + j] == s[i - j]) {
-                ++j;
+            while (i - ret[i] >= 0 && i + ret[i] < n && a[i - ret[i]] == a[i + ret[i]]) {
+                ret[i]++;
             }
-            ret[i] = j;
-            --j;
-            if (i + j > r) {
-                l = i - j;
-                r = i + j;
+            if (i + ret[i] > r) {
+                l = i - ret[i];
+                r = i + ret[i];
             }
         }
         return ret;
     }
 
-    public static int[] getEvenPalindromes(char[] s) {
-        int l = 0;
+    public static int[] getManacher(char[] a) {
+        int n = a.length;
+        int[] ret = new int[n];
+        int l = -1;
         int r = -1;
-        int[] ret = new int[s.length];
-        for (int i = 0; i < s.length; ++i) {
-            int j = 1;
-            if (i <= r) {
-                j = Math.min(ret[l + r - i + 1] + 1, r - i + 2);
+        for (int i = 0; i < n; i++) {
+            if (i < r) {
+                ret[i] = Math.min(ret[l + r - i], r - i);
             }
-            while (i + j - 1 < s.length && i - j >= 0 && s[i + j - 1] == s[i - j]) {
-                ++j;
+            while (i - ret[i] >= 0 && i + ret[i] < n && a[i - ret[i]] == a[i + ret[i]]) {
+                ret[i]++;
             }
-            --j;
-            ret[i] = j;
-            if (i + j - 1 > r) {
-                l = i - j;
-                r = i + j - 1;
+            if (i + ret[i] > r) {
+                l = i - ret[i];
+                r = i + ret[i];
             }
         }
         return ret;
     }
 
-    public static long getPalindromesCount(char[] s) {
-        long ret = 0;
-        for (int x : getEvenPalindromes(s)) {
-            ret += x;
-        }
-        for (int x : getOddPalindromes(s)) {
-            ret += x;
+    public static int[] getManacher(String a) {
+        int n = a.length();
+        int[] ret = new int[n];
+        int l = -1;
+        int r = -1;
+        for (int i = 0; i < n; i++) {
+            if (i < r) {
+                ret[i] = Math.min(ret[l + r - i], r - i);
+            }
+            while (i - ret[i] >= 0 && i + ret[i] < n && a.charAt(i - ret[i]) == a.charAt(i + ret[i])) {
+                ret[i]++;
+            }
+            if (i + ret[i] > r) {
+                l = i - ret[i];
+                r = i + ret[i];
+            }
         }
         return ret;
+    }
+
+    public static long getSubstringCount(SuffixAutomaton dawg) {
+        long result = 0;
+        for (int i = 0; i < dawg.size; i++) {
+            if (i != dawg.ROOT) {
+                result += dawg.length[i] - dawg.length[dawg.link[i]];
+            }
+        }
+        return result;
     }
 }
