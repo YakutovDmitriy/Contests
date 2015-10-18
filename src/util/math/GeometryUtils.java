@@ -12,7 +12,7 @@ public abstract class GeometryUtils {
         return new Line2DDouble(middle, middle.add(per));
     }
 
-    public static Point2DDouble getCenter(Point2DDouble a, Point2DDouble b, Point2DDouble c) {
+    public static Point2DDouble getCircumcenter(Point2DDouble a, Point2DDouble b, Point2DDouble c) {
         return midPerpendicular(a, b).intersect(midPerpendicular(b, c));
     }
 

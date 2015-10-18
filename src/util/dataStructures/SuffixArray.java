@@ -16,11 +16,16 @@ public class SuffixArray {
     public int[] start;
     public int[] where;
 
+    public int size() {
+        return n;
+    }
+
     public SuffixArray(int[] a) {
         n = a.length;
         this.a = a.clone();
         sa = new int[n];
         newSa = new int[n];
+        alphabet = 0;
         for (int x : a) {
             alphabet = Math.max(alphabet, x);
         }
@@ -63,24 +68,25 @@ public class SuffixArray {
         table = null;
     }
 
-    public int getLCP(int ithSuffix, int jthSuffix) {
-        if (ithSuffix == jthSuffix) {
-            return n - ithSuffix;
+    public int getLCP(int ithPosInSA, int jthPosInSA) {
+        if (ithPosInSA == jthPosInSA) {
+            return n - sa[ithPosInSA];
         }
-        int i = where[ithSuffix];
-        int j = where[jthSuffix];
-        if (i > j) {
-            int temp = i;
-            i = j;
-            j = temp;
+        if (lcp == null) {
+            buildLCP();
         }
-        if (i + 1 == j) {
-            return lcp[i];
+        if (ithPosInSA > jthPosInSA) {
+            int temp = ithPosInSA;
+            ithPosInSA = jthPosInSA;
+            jthPosInSA = temp;
+        }
+        if (ithPosInSA + 1 == jthPosInSA) {
+            return lcp[ithPosInSA];
         }
         if (table == null) {
             table = new SparseTableMin(lcp);
         }
-        return table.getMin(i, j);
+        return table.getMin(ithPosInSA, jthPosInSA);
     }
 
     private void build() {
@@ -108,9 +114,10 @@ public class SuffixArray {
                 if (sa[i] < 0) sa[i] += n;
             }
             for (int i = 0; i < n; i++) {
-                newSa[start[cl[sa[i]]]++] = sa[i];
+                int x = sa[i];
+                newSa[start[cl[x]]++] = x;
             }
-            cl[newSa[0]] = 0;
+            newCl[newSa[0]] = 0;
             int last = 0;
             start[0] = 0;
             for (int i = 0; i + 1 < n; i++) {

@@ -6,6 +6,56 @@ public class ArrayUtils {
 
     public static final Random RANDOM = new Random(System.currentTimeMillis());
 
+    public static void sort(int[] a) {
+        shuffle(a);
+        Arrays.sort(a);
+    }
+
+    public static void sort(int[] a, int from, int to) {
+        shuffle(a, from, to);
+        Arrays.sort(a, from, to);
+    }
+
+    public static void sort(long[] a) {
+        shuffle(a);
+        Arrays.sort(a);
+    }
+
+    public static void sort(long[] a, int from, int to) {
+        shuffle(a, from, to);
+        Arrays.sort(a, from, to);
+    }
+
+    public static void sort(double[] a) {
+        shuffle(a);
+        Arrays.sort(a);
+    }
+
+    public static void sort(double[] a, int from, int to) {
+        shuffle(a, from, to);
+        Arrays.sort(a, from, to);
+    }
+
+    public static <T extends Comparable<? super T>> void sort(T[] a) {
+        shuffle(a);
+        Arrays.sort(a);
+    }
+
+    public static <T extends Comparable<? super T>> void sort(T[] a, int from, int to) {
+        shuffle(a, from, to);
+        Arrays.sort(a, from, to);
+    }
+
+    public static <T> void sort(T[] a, Comparator<? super T> comparator) {
+        shuffle(a);
+        Arrays.sort(a, comparator);
+    }
+
+    public static <T> void sort(T[] a, int from, int to, Comparator<? super T> comparator) {
+        shuffle(a, from, to);
+        Arrays.sort(a, from, to, comparator);
+    }
+
     public static void shuffle(int[] a) {
         for (int i = 0; i < a.length - 1; i++) {
             int j = i + RANDOM.nextInt(a.length - i);

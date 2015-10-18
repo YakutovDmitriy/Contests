@@ -1,10 +1,8 @@
 package util.dataStructures;
 
-import java.util.Arrays;
-
 public class SuffixAutomaton {
 
-    public final int MAX_VERTEXES_COUNT;
+    public final int MAX_VERTICES_COUNT;
     public final int ALPHABET;
     public final int ROOT;
 
@@ -14,15 +12,27 @@ public class SuffixAutomaton {
     public boolean[] isClone;
     public int size;
 
-    public SuffixAutomaton(int maxVertexesCount, int alphabet) {
-        this.MAX_VERTEXES_COUNT = maxVertexesCount;
+    public SuffixAutomaton(int maxVerticesCount, int alphabet) {
+        this.MAX_VERTICES_COUNT = maxVerticesCount;
         this.ALPHABET = alphabet;
-        next = new int[ALPHABET][MAX_VERTEXES_COUNT];
-        link = new int[MAX_VERTEXES_COUNT];
-        length = new int[MAX_VERTEXES_COUNT];
-        isClone = new boolean[MAX_VERTEXES_COUNT];
+        next = new int[ALPHABET][MAX_VERTICES_COUNT];
+        link = new int[MAX_VERTICES_COUNT];
+        length = new int[MAX_VERTICES_COUNT];
+        isClone = new boolean[MAX_VERTICES_COUNT];
         size = 0;
         ROOT = getNode(-1, 0);
+    }
+
+    public SuffixAutomaton(int[] array, int alphabet) {
+        this(array.length * 2 + 1, alphabet);
+        int last = ROOT;
+        for (int i = 0; i < array.length; i++) {
+            last = append(last, array[i]);
+        }
+    }
+
+    public SuffixAutomaton(char[] array, int shift, int alphabet) {
+        this(toIntArray(array, shift), alphabet);
     }
 
     public int append(int prev, int symbol) {
@@ -52,6 +62,14 @@ public class SuffixAutomaton {
         return now;
     }
 
+    public static int[] toIntArray(char[] s, int shift) {
+        int[] ret = new int[s.length];
+        for (int i = 0; i < s.length; i++) {
+            ret[i] = s[i] + shift;
+        }
+        return ret;
+    }
+
     private int getNode(int link, int length) {
         for (int i = 0; i < ALPHABET; i++) {
             next[i][size] = -1;
@@ -61,4 +79,7 @@ public class SuffixAutomaton {
         return size++;
     }
 
+    public int size() {
+        return size;
+    }
 }

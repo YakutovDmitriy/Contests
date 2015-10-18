@@ -14,10 +14,10 @@ public class SparseTableMin {
         a = new int[log][];
         a[0] = array.clone();
         for (int i = 1; i < log; i++) {
-            int halfLen = 1 << (i - 1);
+            int len = 1 << i;
             a[i] = new int[n];
-            for (int j = 0; j + halfLen < a[i].length; j++) {
-                a[i][j] = Math.min(a[i - 1][j], a[i - 1][j + halfLen]);
+            for (int j = 0; j + len <= a[i].length; j++) {
+                a[i][j] = Math.min(a[i - 1][j], a[i - 1][j + (len >> 1)]);
             }
         }
         deg = new int[n + 1];
@@ -28,11 +28,10 @@ public class SparseTableMin {
 
     public int getMin(int left, int right) {
         int i = deg[right - left];
-        try {
-            return Math.min(a[i][left], a[i][right - (1 << i)]);
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.err.println(left + " " + right);
-            throw e;
-        }
+        return Math.min(a[i][left], a[i][right - (1 << i)]);
+    }
+
+    public int size() {
+        return a[0].length;
     }
 }

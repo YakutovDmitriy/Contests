@@ -223,7 +223,7 @@ public abstract class MathUtils {
         return ArrayUtils.toIntArray(p);
     }
 
-    public static boolean isPrime(int x) {
+    public static boolean isPrime(long x) {
         for (int i = 2; i * i <= x; i++) {
             if (x % i == 0) {
                 return false;
@@ -232,9 +232,15 @@ public abstract class MathUtils {
         return true;
     }
 
-    public static int getNextPrime(int x) {
-        while (!isPrime(x)) {
+    public static long getNextPrime(long x) {
+        if (x <= 2) {
+            return 2;
+        }
+        if (x % 2 == 0) {
             x++;
+        }
+        while (!isPrime(x)) {
+            x += 2;
         }
         return x;
     }

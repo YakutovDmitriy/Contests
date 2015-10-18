@@ -4,20 +4,21 @@ import java.io.*;
 import java.math.BigInteger;
 import java.util.StringTokenizer;
 
-public class FastReader extends BufferedReader {
+public class FastReader {
 
-    private StringTokenizer stringTokenizer;
+    private StringTokenizer tokenizer;
+    private BufferedReader reader;
 
     public FastReader(InputStream inputStream) {
-        super(new InputStreamReader(inputStream));
+        reader = new BufferedReader(new InputStreamReader(inputStream));
     }
 
     public String nextToken() {
         try {
-            while (stringTokenizer == null || !stringTokenizer.hasMoreElements()) {
-                stringTokenizer = new StringTokenizer(readLine());
+            while (tokenizer == null || !tokenizer.hasMoreElements()) {
+                tokenizer = new StringTokenizer(reader.readLine());
             }
-            return stringTokenizer.nextToken();
+            return tokenizer.nextToken();
         } catch (IOException e) {
             return null;
         }
@@ -29,19 +30,19 @@ public class FastReader extends BufferedReader {
 
     public String nextLine() {
         try {
-            return readLine();
+            return reader.readLine();
         } catch (IOException e) {
             return null;
         }
     }
 
     public boolean hasMoreTokens() {
-        if (stringTokenizer != null && stringTokenizer.hasMoreTokens()) {
+        if (tokenizer != null && tokenizer.hasMoreTokens()) {
             return true;
         }
         try {
-            String line = readLine();
-            stringTokenizer = new StringTokenizer(line);
+            String line = reader.readLine();
+            tokenizer = new StringTokenizer(line);
             return true;
         } catch (IOException | NullPointerException e) {
             return false;

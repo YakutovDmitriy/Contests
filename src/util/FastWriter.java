@@ -15,7 +15,7 @@ public class FastWriter extends PrintWriter {
     }
 
     public PrintWriter printf(String format, Object ... args) {
-        return super.printf(Locale.US, format, args);
+        return super.format(Locale.US, format, args);
     }
 
     public void printArray(int[] a) {
@@ -24,18 +24,24 @@ public class FastWriter extends PrintWriter {
                 if (i > 0) print(' ');
                 print(a[i]);
             }
+            println();
+        } else {
+            println("null");
         }
-        println();
     }
 
     public void printCollection(Collection a) {
-        boolean was = false;
-        for (Object x : a) {
-            if (was) print(' ');
-            print(x);
-            was = true;
+        if (a != null) {
+            boolean was = false;
+            for (Object x : a) {
+                if (was) print(' ');
+                print(x);
+                was = true;
+                println();
+            }
+        } else {
+            println("null");
         }
-        println();
     }
 
     public void printArray(int[] a, int from, int to) {
@@ -44,8 +50,10 @@ public class FastWriter extends PrintWriter {
                 if (i > from) print(' ');
                 print(a[i]);
             }
+            println();
+        } else {
+            println("null");
         }
-        println();
     }
 
     public void printArray(long[] a) {
@@ -54,8 +62,10 @@ public class FastWriter extends PrintWriter {
                 if (i > 0) print(' ');
                 print(a[i]);
             }
+            println();
+        } else {
+            println("null");
         }
-        println();
     }
 
     public void printArray(long[] a, int from, int to) {
@@ -64,8 +74,10 @@ public class FastWriter extends PrintWriter {
                 if (i > from) print(' ');
                 print(a[i]);
             }
+            println();
+        } else {
+            println("null");
         }
-        println();
     }
 
     public <T> void printArray(T[] a) {
@@ -74,8 +86,10 @@ public class FastWriter extends PrintWriter {
                 if (i > 0) print(' ');
                 print(a[i]);
             }
+            println();
+        } else {
+            println("null");
         }
-        println();
     }
 
     public <T> void printArray(T[] a, int from, int to) {
@@ -84,8 +98,10 @@ public class FastWriter extends PrintWriter {
                 if (i > from) print(' ');
                 print(a[i]);
             }
+            println();
+        } else {
+            println("null");
         }
-        println();
     }
 
     public void printArray(double[] a, int precision) {
@@ -95,8 +111,10 @@ public class FastWriter extends PrintWriter {
                 if (i > 0) print(' ');
                 printf(Locale.US, format, a[i]);
             }
+            println();
+        } else {
+            println("null");
         }
-        println();
     }
 
     public void printArray(double[] a, int from, int to, int precision) {
@@ -106,8 +124,10 @@ public class FastWriter extends PrintWriter {
                 if (i > from) print(' ');
                 printf(Locale.US, format, a[i]);
             }
+            println();
+        } else {
+            println("null");
         }
-        println();
     }
 
     public void close() {
