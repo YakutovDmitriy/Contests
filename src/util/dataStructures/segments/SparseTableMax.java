@@ -11,13 +11,13 @@ public class SparseTableMax {
         while ((1 << (log - 1)) < n) {
             log++;
         }
-        a = new int[log][];
-        a[0] = array.clone();
+        a = new int[log][n];
+        System.arraycopy(array, 0, a[0], 0, n);
         for (int i = 1; i < log; i++) {
-            int halfLen = 1 << (i - 1);
-            a[i] = new int[n];
-            for (int j = 0; j + halfLen < a[i].length; j++) {
-                a[i][j] = Math.max(a[i - 1][j], a[i - 1][j + halfLen]);
+            int len = 1 << i;
+            int half = len >> 1;
+            for (int j = 0; j + len <= n; j++) {
+                a[i][j] = Math.max(a[i - 1][j], a[i - 1][j + half]);
             }
         }
         deg = new int[n + 1];
