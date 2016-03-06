@@ -15,7 +15,7 @@ public class FastReader {
 
     public String nextToken() {
         try {
-            while (tokenizer == null || !tokenizer.hasMoreElements()) {
+            while (tokenizer == null || !tokenizer.hasMoreTokens()) {
                 tokenizer = new StringTokenizer(reader.readLine());
             }
             return tokenizer.nextToken();
@@ -37,14 +37,12 @@ public class FastReader {
     }
 
     public boolean hasMoreTokens() {
-        if (tokenizer != null && tokenizer.hasMoreTokens()) {
-            return true;
-        }
         try {
-            String line = reader.readLine();
-            tokenizer = new StringTokenizer(line);
+            while (tokenizer == null || !tokenizer.hasMoreTokens()) {
+                tokenizer = new StringTokenizer(reader.readLine());
+            }
             return true;
-        } catch (IOException | NullPointerException e) {
+        } catch (IOException e) {
             return false;
         }
     }
