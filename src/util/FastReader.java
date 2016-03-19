@@ -90,6 +90,16 @@ public class FastReader {
         return ret;
     }
 
+    public int[][] nextArray2Int(int n, int m) {
+        int[][] ret = new int[n][m];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                ret[i][j] = nextInt();
+            }
+        }
+        return ret;
+    }
+
     public long[] nextArrayLong(int size) {
         long[] ret = new long[size];
         for (int i = 0; i < size; i++) {
