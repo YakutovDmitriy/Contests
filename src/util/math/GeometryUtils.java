@@ -119,20 +119,16 @@ public abstract class GeometryUtils {
                 mn = i;
             }
         }
-        Point2DDouble start = a[mn];
-        a[mn] = a[0];
-        a[0] = start;
+        Point2DDouble start = a[mn]; a[mn] = a[0]; a[0] = start;
         for (int i = 1; i < n; i++) {
             a[i] = a[i].subtract(start);
         }
-        Arrays.sort(a, 1, a.length, new Comparator<Point2DDouble>() {
-            public int compare(Point2DDouble o1, Point2DDouble o2) {
-                double m = o1.mulv(o2);
-                if (signum(m) != 0) {
-                    return -signum(m);
-                }
-                return signum(o1.length2() - o2.length2());
+        Arrays.sort(a, 1, a.length, (o1, o2) -> {
+            double m = o1.mulv(o2);
+            if (signum(m) != 0) {
+                return -signum(m);
             }
+            return signum(o1.length2() - o2.length2());
         });
         for (int i = 1; i < n; i++) {
             a[i] = a[i].add(start);
