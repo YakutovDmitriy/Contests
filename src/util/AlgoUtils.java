@@ -4,7 +4,9 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
-public abstract class AlgoUtils {
+public class AlgoUtils {
+
+    private AlgoUtils() {}
 
     public static void toGauss(double[][] a, final double EPS) {
         if (a == null || a[0] == null) {
@@ -278,9 +280,37 @@ public abstract class AlgoUtils {
         return r;
     }
 
+    public static int upperBound(int[] a, int from, int to, int value) {
+        int l = from - 1;
+        int r = to;
+        while (r - l > 1) {
+            int m = (l + r) / 2;
+            if (a[m] > value) {
+                r = m;
+            } else {
+                l = m;
+            }
+        }
+        return r;
+    }
+
     public static int upperBound(long[] a, long value) {
         int l = -1;
         int r = a.length;
+        while (r - l > 1) {
+            int m = (l + r) / 2;
+            if (a[m] > value) {
+                r = m;
+            } else {
+                l = m;
+            }
+        }
+        return r;
+    }
+
+    public static int upperBound(long[] a, int from, int to, long value) {
+        int l = from - 1;
+        int r = to;
         while (r - l > 1) {
             int m = (l + r) / 2;
             if (a[m] > value) {

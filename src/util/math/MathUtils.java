@@ -266,7 +266,7 @@ public abstract class MathUtils {
         return res;
     }
 
-    public static int[][] pow(int[][] base, int indicator, int mod) {
+    public static int[][] pow(int[][] base, long indicator, int mod) {
         if (indicator < 0 || mod <= 0 || base == null || base[0] == null || base.length != base[0].length) {
             return null;
         }

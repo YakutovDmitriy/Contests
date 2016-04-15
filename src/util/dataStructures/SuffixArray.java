@@ -10,10 +10,7 @@ public class SuffixArray {
     public int alphabet;
     public int[] a;
     public int[] sa;
-    public int[] newSa;
     public int[] cl;
-    public int[] newCl;
-    public int[] start;
     public int[] where;
 
     public int size() {
@@ -24,15 +21,12 @@ public class SuffixArray {
         n = a.length;
         this.a = a.clone();
         sa = new int[n];
-        newSa = new int[n];
         alphabet = 0;
         for (int x : a) {
             alphabet = Math.max(alphabet, x);
         }
         alphabet += 2;
         cl = new int[Math.max(n, alphabet)];
-        newCl = new int[cl.length];
-        start = new int[cl.length];
         where = new int[n];
         build();
     }
@@ -76,9 +70,7 @@ public class SuffixArray {
             buildLCP();
         }
         if (ithPosInSA > jthPosInSA) {
-            int temp = ithPosInSA;
-            ithPosInSA = jthPosInSA;
-            jthPosInSA = temp;
+            int temp = ithPosInSA; ithPosInSA = jthPosInSA; jthPosInSA = temp;
         }
         if (ithPosInSA + 1 == jthPosInSA) {
             return lcp[ithPosInSA];
@@ -91,7 +83,7 @@ public class SuffixArray {
 
     private void build() {
         System.arraycopy(a, 0, cl, 0, a.length);
-        Arrays.fill(start, 0);
+        int[] start = new int[cl.length];
         for (int i = 0; i < n; i++) {
             start[cl[i] + 1]++;
         }
@@ -108,6 +100,8 @@ public class SuffixArray {
         for (int i = 1; i < alphabet; i++) {
             start[i] += start[i - 1];
         }
+        int[] newSa = new int[n];
+        int[] newCl = new int[cl.length];
         for (int half = 1; half < n; half *= 2) {
             for (int i = 0; i < n; i++) {
                 sa[i] -= half;
@@ -134,12 +128,8 @@ public class SuffixArray {
                     newCl[y] = newCl[x];
                 }
             }
-            int[] temp = cl;
-            cl = newCl;
-            newCl = temp;
-            temp = sa;
-            sa = newSa;
-            newSa = temp;
+            int[] temp = cl; cl = newCl; newCl = temp;
+            temp = sa; sa = newSa; newSa = temp;
         }
         for (int i = 0; i < n; i++) {
             where[sa[i]] = i;
