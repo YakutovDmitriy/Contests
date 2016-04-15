@@ -2,7 +2,7 @@ package code;
 
 import util.ArrayUtils;
 import util.FastReader;
-import util.dataStructures.SparseTableMax;
+import util.dataStructures.segments.SparseTableMax;
 import util.math.MathUtils;
 
 import java.io.PrintWriter;
