@@ -1,0 +1,31 @@
+8 FreeCell
+12 MULTI_NUMBER
+7 TASK_ID
+9 input.txt
+7 TASK_ID
+10 output.txt
+1
+0
+29 3
+1 100 50
+10 10 100
+9 80 56
+
+51 Case #1: Possible
+Case #2: Broken
+Case #3: Possible
+1
+8 src/code
+16 -Xmx256m -Xss64m
+4 Main
+13 code.FreeCell
+39 net.egork.chelper.checkers.TokenChecker
+0 
+0
+10 2015.08.15
+14 SPbSU WarmUp 2
+1
+15 util.FastReader
+15 util.FastWriter
+0
+0

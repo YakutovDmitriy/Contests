@@ -1,0 +1,35 @@
+9 Mushrooms
+6 SINGLE
+7 TASK_ID
+9 input.txt
+7 TASK_ID
+10 output.txt
+2
+0
+17 5
+1 2 3 4 5
+3
+1 4
+2 15
+1
+1
+21 7
+1 1 4 2 3 5 1
+1
+0 6
+1 5
+1
+8 src/code
+16 -Xmx256m -Xss64m
+4 Main
+14 code.Mushrooms
+39 net.egork.chelper.checkers.TokenChecker
+0 
+0
+10 2015.08.14
+18 SPbSU Segment Tree
+1
+15 util.FastReader
+15 util.FastWriter
+0
+0

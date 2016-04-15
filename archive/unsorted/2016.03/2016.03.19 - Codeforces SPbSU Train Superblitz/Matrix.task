@@ -1,0 +1,39 @@
+6 Matrix
+6 SINGLE
+8 STANDARD
+9 input.txt
+8 STANDARD
+10 output.txt
+2
+0
+9 2
+1 1
+1 1
+9 2
+1 1
+2 2
+1
+1
+19 3
+0 1 2
+1 2 0
+2 0 1
+13 0
+1 1
+2 3
+3 2
+1
+8 src/code
+16 -Xmx256m -Xss64m
+4 Main
+11 code.Matrix
+39 net.egork.chelper.checkers.TokenChecker
+0 
+0
+10 2016.03.19
+33 Codeforces SPbSU Train Superblitz
+1
+15 util.FastReader
+15 util.FastWriter
+0
+0

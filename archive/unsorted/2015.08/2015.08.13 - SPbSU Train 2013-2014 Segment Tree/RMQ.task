@@ -1,0 +1,44 @@
+3 RMQ
+6 SINGLE
+7 TASK_ID
+9 input.txt
+7 TASK_ID
+10 output.txt
+3
+0
+15 3 2
+1 2 1
+2 3 2
+16 consistent
+1 2 2
+1
+1
+22 3 3
+1 2 1
+1 1 2
+2 3 2
+
+13 inconsistent
+
+1
+2
+15 4 2
+1 3 3
+2 4 4
+18 consistent
+3 4 4 4
+1
+8 src/code
+16 -Xmx256m -Xss64m
+4 Main
+8 code.RMQ
+39 net.egork.chelper.checkers.TokenChecker
+0 
+0
+10 2015.08.13
+34 SPbSU Train 2013-2014 Segment Tree
+1
+15 util.FastReader
+15 util.FastWriter
+0
+0

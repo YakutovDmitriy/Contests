@@ -1,0 +1,27 @@
+38 1960 - Palindromes and Super Abilities
+6 SINGLE
+8 STANDARD
+-1
+8 STANDARD
+-1
+1
+0
+4 aba
+
+6 1 2 3
+
+1
+8 src/code
+15 -Xmx64M -Xss64M
+4 Main
+13 code.Task1960
+39 net.egork.chelper.checkers.TokenChecker
+0 
+0
+10 2016.04.16
+9 Volume 10
+1
+15 util.FastReader
+15 util.FastWriter
+0
+0

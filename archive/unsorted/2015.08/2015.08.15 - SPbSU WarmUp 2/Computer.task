@@ -1,0 +1,29 @@
+8 Computer
+6 SINGLE
+7 TASK_ID
+9 input.txt
+7 TASK_ID
+10 output.txt
+2
+0
+4 0011
+1 1
+1
+1
+4 1100
+1 2
+1
+8 src/code
+16 -Xmx256m -Xss64m
+4 Main
+13 code.Computer
+39 net.egork.chelper.checkers.TokenChecker
+0 
+0
+10 2015.08.15
+14 SPbSU WarmUp 2
+1
+15 util.FastReader
+15 util.FastWriter
+0
+0

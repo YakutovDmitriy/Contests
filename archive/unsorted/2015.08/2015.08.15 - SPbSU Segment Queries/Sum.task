@@ -1,0 +1,41 @@
+3 Sum
+6 SINGLE
+7 TASK_ID
+9 input.txt
+7 TASK_ID
+10 output.txt
+1
+0
+64 5 9
+A 2 3 2
+A 3 5 1
+A 4 5 2
+Q 1 3
+Q 2 2
+Q 3 4
+Q 4 5
+Q 5 5
+Q 1 5
+
+12 3
+2
+3
+4
+2
+7
+
+1
+8 src/code
+16 -Xmx256m -Xss64m
+4 Main
+8 code.Sum
+39 net.egork.chelper.checkers.TokenChecker
+0 
+0
+10 2015.08.15
+21 SPbSU Segment Queries
+1
+15 util.FastReader
+15 util.FastWriter
+0
+0

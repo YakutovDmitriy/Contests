@@ -1,0 +1,39 @@
+7 Painter
+6 SINGLE
+7 TASK_ID
+9 input.txt
+7 TASK_ID
+10 output.txt
+1
+0
+45 7
+W 2 3
+B 2 2
+B 4 2
+B 3 2
+B 7 2
+W 3 1
+W 0 10
+
+27 0 0
+1 2
+1 4
+1 4
+2 6
+3 5
+0 0
+1
+8 src/code
+16 -Xmx256m -Xss64m
+4 Main
+12 code.Painter
+39 net.egork.chelper.checkers.TokenChecker
+0 
+0
+10 2015.08.14
+18 SPbSU Segment Tree
+1
+15 util.FastReader
+15 util.FastWriter
+0
+0

@@ -1,0 +1,27 @@
+5 Array
+6 SINGLE
+7 TASK_ID
+9 input.txt
+7 TASK_ID
+10 output.txt
+1
+0
+12 5
+1 2 3 4 5
+
+9 1 5 2 4 3
+1
+8 src/code
+16 -Xmx256m -Xss64m
+4 Main
+10 code.Array
+39 net.egork.chelper.checkers.TokenChecker
+0 
+0
+10 2015.08.15
+14 SPbSU WarmUp 2
+1
+15 util.FastReader
+15 util.FastWriter
+0
+0
