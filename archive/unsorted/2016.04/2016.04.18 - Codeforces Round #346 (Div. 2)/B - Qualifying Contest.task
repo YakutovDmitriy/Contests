@@ -1,0 +1,43 @@
+22 B - Qualifying Contest
+6 SINGLE
+8 STANDARD
+-1
+8 STANDARD
+-1
+2
+0
+72 5 2
+Ivanov 1 763
+Andreev 2 800
+Petrov 1 595
+Sidorov 1 790
+Semenov 2 503
+
+-1
+1
+1
+72 5 2
+Ivanov 1 800
+Andreev 2 763
+Petrov 1 800
+Sidorov 1 800
+Semenov 2 503
+
+18 ?
+Andreev Semenov
+
+1
+8 src/code
+8 -Xmx256M
+4 Main
+10 code.TaskB
+39 net.egork.chelper.checkers.TokenChecker
+0 
+0
+10 2016.04.18
+30 Codeforces Round #346 (Div. 2)
+1
+15 util.FastReader
+15 util.FastWriter
+0
+0

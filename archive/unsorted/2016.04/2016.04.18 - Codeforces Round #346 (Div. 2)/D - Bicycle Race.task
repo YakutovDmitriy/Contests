@@ -1,0 +1,57 @@
+16 D - Bicycle Race
+6 SINGLE
+8 STANDARD
+-1
+8 STANDARD
+-1
+2
+0
+30 6
+0 0
+0 1
+1 1
+1 2
+2 2
+2 0
+0 0
+
+2 1
+
+1
+1
+71 16
+1 1
+1 5
+3 5
+3 7
+2 7
+2 9
+6 9
+6 7
+5 7
+5 3
+4 3
+4 4
+3 4
+3 2
+5 2
+5 1
+1 1
+
+2 6
+
+1
+8 src/code
+8 -Xmx256M
+4 Main
+10 code.TaskD
+39 net.egork.chelper.checkers.TokenChecker
+0 
+0
+10 2016.04.18
+30 Codeforces Round #346 (Div. 2)
+1
+15 util.FastReader
+15 util.FastWriter
+0
+0
