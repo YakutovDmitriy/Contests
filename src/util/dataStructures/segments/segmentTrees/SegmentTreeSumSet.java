@@ -1,24 +1,23 @@
-package util.dataStructures.segments;
+package util.dataStructures.segments.segmentTrees;
 
 import java.util.Arrays;
 
-public class SegmentTreeMinSet {
+public class SegmentTreeSumSet {
 
-    private static final int NONE = Integer.MAX_VALUE;
+    private static final int NONE = Integer.MIN_VALUE;
 
     private final int n;
-    private int[] tree;
+    private long[] tree;
     private int[] needSet;
 
-    public SegmentTreeMinSet(int n) {
+    public SegmentTreeSumSet(int n) {
         this.n = n;
-        tree = new int[4 * n];
+        tree = new long[4 * n];
         needSet = new int[4 * n];
-        Arrays.fill(tree, NONE);
         Arrays.fill(needSet, NONE);
     }
 
-    public SegmentTreeMinSet(int[] array) {
+    public SegmentTreeSumSet(int[] array) {
         this(array.length);
         build(0, 0, n, array);
     }
@@ -38,10 +37,11 @@ public class SegmentTreeMinSet {
         }
     }
 
-    private void push(int v) {
+    private void push(int v, int l, int r) {
         if (needSet[v] != NONE) {
-            tree[2 * v + 1] = needSet[v];
-            tree[2 * v + 2] = needSet[v];
+            int m = (l + r) / 2;
+            tree[2 * v + 1] = (long) (m - l) * needSet[v];
+            tree[2 * v + 2] = (long) (r - m) * needSet[v];
             needSet[2 * v + 1] = needSet[v];
             needSet[2 * v + 2] = needSet[v];
             needSet[v] = NONE;
@@ -49,7 +49,7 @@ public class SegmentTreeMinSet {
     }
 
     private void update(int v) {
-        tree[v] = Math.min(tree[2 * v + 1], tree[2 * v + 2]);
+        tree[v] = tree[2 * v + 1] + tree[2 * v + 2];
     }
 
     private int from;
@@ -68,35 +68,33 @@ public class SegmentTreeMinSet {
             return;
         }
         if (from <= l && r <= to) {
-            tree[v] = value;
             needSet[v] = value;
+            tree[v] = (long) (r - l) * value;
             return;
         }
-        push(v);
+        push(v, l, r);
         int m = (l + r) / 2;
         _set(2 * v + 1, l, m);
         _set(2 * v + 2, m, r);
         update(v);
     }
 
-    public int getMin(int from, int to) {
+    public long getSum(int from, int to) {
         this.from = from;
         this.to = to;
-        return _getMin(0, 0, n);
+        return _getSum(0, 0, n);
     }
 
-    private int _getMin(int v, int l, int r) {
+    private long _getSum(int v, int l, int r) {
         if (r <= from || to <= l) {
-            return NONE;
+            return 0;
         }
         if (from <= l && r <= to) {
             return tree[v];
         }
-        push(v);
+        push(v, l, r);
         int m = (l + r) / 2;
-        return Math.min(
-                _getMin(2 * v + 1, l, m),
-                _getMin(2 * v + 2, m, r)
-        );
+        return _getSum(2 * v + 1, l, m) +
+                _getSum(2 * v + 2, m, r);
     }
 }

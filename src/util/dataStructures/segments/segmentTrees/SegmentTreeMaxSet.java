@@ -1,23 +1,24 @@
-package util.dataStructures.segments;
+package util.dataStructures.segments.segmentTrees;
 
 import java.util.Arrays;
 
-public class SegmentTreeSumSet {
+public class SegmentTreeMaxSet {
 
     private static final int NONE = Integer.MIN_VALUE;
 
     private final int n;
-    private long[] tree;
+    private int[] tree;
     private int[] needSet;
 
-    public SegmentTreeSumSet(int n) {
+    public SegmentTreeMaxSet(int n) {
         this.n = n;
-        tree = new long[4 * n];
+        tree = new int[4 * n];
         needSet = new int[4 * n];
+        Arrays.fill(tree, NONE);
         Arrays.fill(needSet, NONE);
     }
 
-    public SegmentTreeSumSet(int[] array) {
+    public SegmentTreeMaxSet(int[] array) {
         this(array.length);
         build(0, 0, n, array);
     }
@@ -37,11 +38,10 @@ public class SegmentTreeSumSet {
         }
     }
 
-    private void push(int v, int l, int r) {
+    private void push(int v) {
         if (needSet[v] != NONE) {
-            int m = (l + r) / 2;
-            tree[2 * v + 1] = (long) (m - l) * needSet[v];
-            tree[2 * v + 2] = (long) (r - m) * needSet[v];
+            tree[2 * v + 1] = needSet[v];
+            tree[2 * v + 2] = needSet[v];
             needSet[2 * v + 1] = needSet[v];
             needSet[2 * v + 2] = needSet[v];
             needSet[v] = NONE;
@@ -49,7 +49,7 @@ public class SegmentTreeSumSet {
     }
 
     private void update(int v) {
-        tree[v] = tree[2 * v + 1] + tree[2 * v + 2];
+        tree[v] = Math.max(tree[2 * v + 1], tree[2 * v + 2]);
     }
 
     private int from;
@@ -68,33 +68,35 @@ public class SegmentTreeSumSet {
             return;
         }
         if (from <= l && r <= to) {
+            tree[v] = value;
             needSet[v] = value;
-            tree[v] = (long) (r - l) * value;
             return;
         }
-        push(v, l, r);
+        push(v);
         int m = (l + r) / 2;
         _set(2 * v + 1, l, m);
         _set(2 * v + 2, m, r);
         update(v);
     }
 
-    public long getSum(int from, int to) {
+    public int getMax(int from, int to) {
         this.from = from;
         this.to = to;
-        return _getSum(0, 0, n);
+        return _getMax(0, 0, n);
     }
 
-    private long _getSum(int v, int l, int r) {
+    private int _getMax(int v, int l, int r) {
         if (r <= from || to <= l) {
-            return 0;
+            return NONE;
         }
         if (from <= l && r <= to) {
             return tree[v];
         }
-        push(v, l, r);
+        push(v);
         int m = (l + r) / 2;
-        return _getSum(2 * v + 1, l, m) +
-                _getSum(2 * v + 2, m, r);
+        return Math.max(
+                _getMax(2 * v + 1, l, m),
+                _getMax(2 * v + 2, m, r)
+        );
     }
 }

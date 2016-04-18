@@ -1,4 +1,4 @@
-package util.dataStructures;
+package util.dataStructures.pairs;
 
 public class PairIntInt implements Comparable<PairIntInt> {
 

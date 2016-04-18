@@ -1,13 +1,13 @@
-package util.dataStructures;
+package util.dataStructures.pairs;
 
-public class PairLongLong implements Comparable<PairLongLong> {
+public class PairLongInt implements Comparable<PairLongInt> {
 
     public long first;
-    public long second;
+    public int second;
 
-    public PairLongLong() {}
+    public PairLongInt() {}
 
-    public PairLongLong(long first, long second) {
+    public PairLongInt(long first, int second) {
         this.first = first;
         this.second = second;
     }
@@ -16,7 +16,7 @@ public class PairLongLong implements Comparable<PairLongLong> {
         return first;
     }
 
-    public long getSecond() {
+    public int getSecond() {
         return second;
     }
 
@@ -24,7 +24,7 @@ public class PairLongLong implements Comparable<PairLongLong> {
         this.first = first;
     }
 
-    public void setSecond(long second) {
+    public void setSecond(int second) {
         this.second = second;
     }
 
@@ -42,14 +42,14 @@ public class PairLongLong implements Comparable<PairLongLong> {
 
     public int hashCode() {
         int result = (int) (first ^ (first >>> 32));
-        result = 31 * result + (int) (second ^ (second >>> 32));
+        result = 31 * result + second;
         return result;
     }
 
-    public int compareTo(PairLongLong that) {
+    public int compareTo(PairLongInt that) {
         if (first != that.first) {
             return Long.compare(first, that.first);
         }
-        return Long.compare(second, that.second);
+        return Integer.compare(second, that.second);
     }
 }

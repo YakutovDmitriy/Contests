@@ -1,4 +1,4 @@
-package util.dataStructures;
+package util.dataStructures.strings;
 
 import util.dataStructures.segments.SparseTableMin;
 

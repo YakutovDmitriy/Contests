@@ -1,18 +1,18 @@
-package util.dataStructures.segments;
+package util.dataStructures.segments.segmentTrees;
 
-public class SegmentTreeMinAdd {
+public class SegmentTreeMaxAdd {
 
     private final int n;
     private int[] tree;
     private int[] needAdd;
 
-    public SegmentTreeMinAdd(int n) {
+    public SegmentTreeMaxAdd(int n) {
         this.n = n;
         tree = new int[4 * n];
         needAdd = new int[4 * n];
     }
 
-    public SegmentTreeMinAdd(int[] array) {
+    public SegmentTreeMaxAdd(int[] array) {
         this(array.length);
         build(0, 0, n, array);
     }
@@ -43,7 +43,7 @@ public class SegmentTreeMinAdd {
     }
 
     private void update(int v) {
-        tree[v] = Math.min(tree[2 * v + 1], tree[2 * v + 2]);
+        tree[v] = Math.max(tree[2 * v + 1], tree[2 * v + 2]);
     }
 
     private int from;
@@ -73,24 +73,24 @@ public class SegmentTreeMinAdd {
         update(v);
     }
 
-    public int getMin(int from, int to) {
+    public int getMax(int from, int to) {
         this.from = from;
         this.to = to;
-        return _getMin(0, 0, n);
+        return _getMax(0, 0, n);
     }
 
-    private int _getMin(int v, int l, int r) {
+    private int _getMax(int v, int l, int r) {
         if (r <= from || to <= l) {
-            return Integer.MAX_VALUE;
+            return Integer.MIN_VALUE;
         }
         if (from <= l && r <= to) {
             return tree[v];
         }
         push(v);
         int m = (l + r) / 2;
-        return Math.min(
-                _getMin(2 * v + 1, l, m),
-                _getMin(2 * v + 2, m, r)
+        return Math.max(
+                _getMax(2 * v + 1, l, m),
+                _getMax(2 * v + 2, m, r)
         );
     }
 
