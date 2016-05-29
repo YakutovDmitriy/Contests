@@ -1,7 +1,5 @@
 package util.dataStructures.strings;
 
-import java.util.Arrays;
-
 public class Eertree {
 
     public int[] len;

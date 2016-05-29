@@ -31,14 +31,6 @@ public class SuffixArray {
         build();
     }
 
-    public static int[] toIntArray(char[] s, int shift) {
-        int[] a = new int[s.length];
-        for (int i = 0; i < s.length; i++) {
-            a[i] = s[i] + shift;
-        }
-        return a;
-    }
-
     public int[] lcp;
     public SparseTableMin table;
 

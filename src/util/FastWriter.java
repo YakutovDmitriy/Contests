@@ -6,6 +6,14 @@ import java.util.Locale;
 
 public class FastWriter extends PrintWriter {
 
+    public FastWriter(OutputStream out, boolean autoFlush) {
+        super(out, autoFlush);
+    }
+
+    public FastWriter(Writer out, boolean autoFlush) {
+        super(out, autoFlush);
+    }
+
     public FastWriter(OutputStream out) {
         super(out);
     }

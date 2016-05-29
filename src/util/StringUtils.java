@@ -1,6 +1,6 @@
 package util;
 
-import util.dataStructures.SuffixAutomaton;
+import util.dataStructures.strings.SuffixAutomaton;
 
 public abstract class StringUtils {
 
@@ -274,5 +274,21 @@ public abstract class StringUtils {
             }
         }
         return result;
+    }
+
+    public static int[] toIntArray(char[] s, int shift) {
+        int[] a = new int[s.length];
+        for (int i = 0; i < s.length; i++) {
+            a[i] = s[i] + shift;
+        }
+        return a;
+    }
+
+    public static int[] toIntArray(String s, int shift) {
+        int[] a = new int[s.length()];
+        for (int i = 0; i < s.length(); i++) {
+            a[i] = s.charAt(i) + shift;
+        }
+        return a;
     }
 }
