@@ -1,0 +1,31 @@
+9 FlyingPig
+6 SINGLE
+6 CUSTOM
+9 input.txt
+6 CUSTOM
+10 output.txt
+2
+0
+8 3
+1 2 -1
+1 2
+1
+1
+16 5
+-2 -2 -2 -2 -2
+2 16
+1
+8 src/code
+16 -Xmx256m -Xss64m
+4 Main
+14 code.FlyingPig
+39 net.egork.chelper.checkers.TokenChecker
+0 
+0
+10 2016.09.17
+0 
+1
+15 util.FastReader
+15 util.FastWriter
+0
+0

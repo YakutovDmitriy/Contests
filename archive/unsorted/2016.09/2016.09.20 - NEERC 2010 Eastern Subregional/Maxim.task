@@ -1,0 +1,41 @@
+5 Maxim
+6 SINGLE
+8 STANDARD
+9 input.txt
+8 STANDARD
+10 output.txt
+5
+0
+3 200
+7 100 100
+1
+1
+3 625
+7 375 250
+1
+2
+7 9967009
+-1
+1
+3
+6 674041
+-1
+1
+4
+9 999002449
+-1
+1
+8 src/code
+16 -Xmx256m -Xss64m
+4 Main
+10 code.Maxim
+39 net.egork.chelper.checkers.TokenChecker
+0 
+0
+10 2016.09.20
+30 NEERC 2010 Eastern Subregional
+1
+15 util.FastReader
+15 util.FastWriter
+0
+0

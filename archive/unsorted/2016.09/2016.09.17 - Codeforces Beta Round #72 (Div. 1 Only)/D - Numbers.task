@@ -1,0 +1,39 @@
+11 D - Numbers
+6 SINGLE
+8 STANDARD
+-1
+8 STANDARD
+-1
+3
+0
+7 1 10 2
+
+2 5
+
+1
+1
+8 12 23 3
+
+2 2
+
+1
+2
+7 6 19 5
+
+2 0
+
+1
+8 src/code
+8 -Xmx256M
+4 Main
+10 code.TaskD
+39 net.egork.chelper.checkers.TokenChecker
+0 
+0
+10 2016.09.17
+39 Codeforces Beta Round #72 (Div. 1 Only)
+1
+15 util.FastReader
+15 util.FastWriter
+0
+0
