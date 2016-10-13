@@ -210,7 +210,7 @@ public class AlgoUtils {
         return r;
     }
 
-    public static <T extends Comparable<? super T>> int lowerBound(T[] a, T value) {
+    public static <T extends Comparable<? super S>, S> int lowerBound(T[] a, S value) {
         int l = -1;
         int r = a.length;
         while (r - l > 1) {
@@ -238,7 +238,7 @@ public class AlgoUtils {
         return r;
     }
 
-    public static <T extends Comparable<? super T>> int lowerBound(List<T> a, T value) {
+    public static <T extends Comparable<? super S>, S> int lowerBound(List<T> a, S value) {
         int l = -1;
         int r = a.size();
         while (r - l > 1) {
@@ -336,7 +336,7 @@ public class AlgoUtils {
         return r;
     }
 
-    public static <T extends Comparable<? super T>> int upperBound(T[] a, T value) {
+    public static <T extends Comparable<? super S>, S> int upperBound(T[] a, S value) {
         int l = -1;
         int r = a.length;
         while (r - l > 1) {
@@ -364,7 +364,7 @@ public class AlgoUtils {
         return r;
     }
 
-    public static <T extends Comparable<? super T>> int upperBound(List<T> a, T value) {
+    public static <T extends Comparable<? super S>, S> int upperBound(List<T> a, S value) {
         int l = -1;
         int r = a.size();
         while (r - l > 1) {

@@ -2,7 +2,11 @@ package util;
 
 import util.dataStructures.strings.SuffixAutomaton;
 
-public abstract class StringUtils {
+import java.util.Arrays;
+
+public class StringUtils {
+
+    private StringUtils() {}
 
     public static int getPeriod(char[] s) {
         int[] prefix = getPrefixFunction(s);
@@ -201,9 +205,7 @@ public abstract class StringUtils {
         temp[a.length] = separator;
         System.arraycopy(b, 0, temp, a.length + 1, b.length);
         int[] z = getZFunction(temp);
-        int[] ret = new int[b.length];
-        System.arraycopy(z, a.length + 1, ret, 0, b.length);
-        return ret;
+        return Arrays.copyOfRange(z, a.length + 1, z.length);
     }
 
     public static int[] getManacher(int[] a) {

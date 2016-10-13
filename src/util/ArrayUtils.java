@@ -4,6 +4,8 @@ import java.util.*;
 
 public class ArrayUtils {
 
+    private ArrayUtils() {}
+
     public static final Random RANDOM = new Random(System.currentTimeMillis());
 
     public static void sort(int[] a) {
@@ -131,6 +133,21 @@ public class ArrayUtils {
     public static <T> T[] getNewArray(T[] instance, int length) {
         return (T[])java.lang.reflect.Array.newInstance
                 (instance.getClass().getComponentType(), length);
+    }
+
+    public static int[] sortAndUnique(int[] a) {
+        sort(a);
+        return unique(a);
+    }
+
+    public static long[] sortAndUnique(long[] a) {
+        sort(a);
+        return unique(a);
+    }
+
+    public static double[] sortAndUnique(double[] a) {
+        sort(a);
+        return unique(a);
     }
 
     public static int[] unique(int[] a) {

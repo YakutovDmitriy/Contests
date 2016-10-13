@@ -5,7 +5,9 @@ import util.ArrayUtils;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public abstract class MathUtils {
+public class MathUtils {
+
+    private MathUtils() {}
 
     public static double sqrt(double x) {
         double ret = x;
@@ -15,13 +17,13 @@ public abstract class MathUtils {
         return ret;
     }
 
-    public static int modPow(int base, long indicator, int module) {
+    public static int modPow(int base, long indicator, int modulo) {
         int ret = 1;
         for (; indicator > 0; indicator >>= 1) {
             if ((indicator & 1) == 1) {
-                ret = (int) ((long) ret * base % module);
+                ret = (int) ((long) ret * base % modulo);
             }
-            base = (int) ((long) base * base % module);
+            base = (int) ((long) base * base % modulo);
         }
         return ret;
     }
@@ -57,11 +59,15 @@ public abstract class MathUtils {
         return res;
     }
 
-    public static int[] getInversedFactirials(int n, int mod) {
+    public static int[] getInversedFactirials(int n, int modulo) {
         int[] ret = new int[n + 1];
-        ret[0] = 1;
+        int nFact = 1;
         for (int i = 1; i <= n; i++) {
-            ret[i] = (int) ((long) ret[i - 1] * getInversed(i, mod));
+            nFact = (int) ((long) nFact * i % modulo);
+        }
+        ret[n] = getInversed(nFact, modulo);
+        for (int i = n - 1; i >= 0; i--) {
+            ret[i] = (int) ((long) ret[i + 1] * (i + 1) % modulo);
         }
         return ret;
     }
@@ -176,7 +182,7 @@ public abstract class MathUtils {
     public static int[] getPrimeDivisorsOfNumbersTo(int n) {
         int[] d = new int[n + 1];
         Arrays.fill(d, -1);
-        for (int i = 2; i * i <= n; i++) {
+        for (int i = 2; i <= n; i++) {
             if (d[i] == -1) {
                 for (int j = i; j <= n; j += i) {
                     d[j] = i;
@@ -224,6 +230,15 @@ public abstract class MathUtils {
     }
 
     public static boolean isPrime(long x) {
+        for (long i = 2; i * i <= x; i++) {
+            if (x % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean isPrime(int x) {
         for (int i = 2; i * i <= x; i++) {
             if (x % i == 0) {
                 return false;
@@ -245,21 +260,25 @@ public abstract class MathUtils {
         return x;
     }
 
-    public static int[][] multiply(int[][] a, int[][] b, int mod) {
-        if (a == null || b == null || b.length == 0 || a.length == 0 || a[0].length != b.length || mod <= 0) {
+    public static int[][] multiply(int[][] a, int[][] b, int modulo) {
+        if (a == null || b == null || b.length == 0 || a.length == 0 || a[0].length != b.length || modulo <= 0) {
             return null;
         }
         int n = a.length;
         int m = b.length;
         int l = b[0].length;
         int[][] res = new int[n][l];
+        long modulo2 = (long) modulo * modulo;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < l; j++) {
                 long now = 0;
                 for (int k = 0; k < m; k++) {
                     now += (long) a[i][k] * b[k][j];
+                    if (now >= modulo2) {
+                        now -= modulo2;
+                    }
                 }
-                now %= mod;
+                now %= modulo;
                 res[i][j] = (int) now;
             }
         }

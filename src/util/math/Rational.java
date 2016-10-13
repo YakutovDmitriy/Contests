@@ -6,8 +6,14 @@ public class Rational implements Comparable<Rational> {
     public BigInteger numerator;
     public BigInteger denominator;
 
+    public static final Rational ZERO = new Rational(0);
+    public static final Rational ONE = new Rational(1);
+    public static final Rational TWO = new Rational(2);
+    public static final Rational THREE = new Rational(3);
+    public static final Rational TEN = new Rational(10);
+
     public Rational(int a) {
-        numerator = new BigInteger(a + "");
+        numerator = BigInteger.valueOf(a);
         denominator = BigInteger.ONE;
     }
 

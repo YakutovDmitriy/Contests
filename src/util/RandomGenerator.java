@@ -9,7 +9,7 @@ import java.util.Random;
 
 public class RandomGenerator {
 
-    public static final Random RANDOM = new Random(1510L);
+    public static final Random RANDOM = new Random(960172L);
     
     public static int[] randomPermutation(int size) {
         int[] ret = new int[size];

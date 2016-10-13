@@ -3,7 +3,9 @@ package util.math;
 import java.util.Arrays;
 import java.util.Comparator;
 
-public abstract class GeometryUtils {
+public class GeometryUtils {
+
+    private GeometryUtils() {}
 
     public static final double EPS = 1e-8;
 
